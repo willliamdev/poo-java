@@ -7,6 +7,14 @@ public class Caneta {
     private int carga;
     private boolean tampada;
 
+    public Caneta(String modelo, String cor, float ponta){
+        this.modelo = modelo;
+        this.cor = cor;
+        this.ponta = ponta;
+        this.carga = 100;
+        this.tampada = true;
+    }
+
     public void status() {
         System.out.println("Cor: " + this.cor);
         System.out.println("Ponta: " + this.ponta);
