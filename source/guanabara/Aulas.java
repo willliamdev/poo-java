@@ -1,4 +1,4 @@
-package source;
+package source.guanabara;
 
 public class Aulas {
     public static void main(String[] agrs){

@@ -1,4 +1,4 @@
-package source;
+package source.guanabara;
 
 public class Caneta {
     private String modelo;

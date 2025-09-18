@@ -1,4 +1,4 @@
-package bank;
+package source.bank;
 
 public class Account {
     public int id;
