@@ -8,8 +8,6 @@ public class GasStation {
     public static void main(String[] args) {
 
         int total_clients = 0;
-        int option = 0;
-        double fuel_amount = 0;
 
         Fuel[] fuels = new Fuel[3];
 
@@ -28,29 +26,64 @@ public class GasStation {
         Client[] clients = new Client[total_clients];
 
         for (int i = 0; i < total_clients; i++) {
-            System.out.println((i+1) + "º Cliente ---------------------");
+            clients[i] = createClient(fuels);
+        }
+
+        printSales(clients);
+
+    }
+
+    static Client createClient(Fuel[] fuelsOptions) {
+        int selectedFuelType;
+
+        double fuelAmount;
+
+        do {
             System.out.println("Selecione o tipo de combustível ");
             System.out.println(" 1 - Gasolina\n 2 - Etanol\n 3 - Diesel");
             System.out.print("Tipo = ");
-            option = input.nextInt();
+            selectedFuelType = input.nextInt();
+            if (selectedFuelType < 1 || selectedFuelType > 3) {
+                System.out.println("Ops! Opção inválida!!!");
+            } else {
+                break;
+            }
 
-            System.out.print("Insira a quantidade de litros: ");
-            fuel_amount = input.nextDouble();
+        } while (true);
 
-            clients[i] = new Client(fuels[option - 1], fuel_amount);
+        System.out.print("Insira a quantidade de litros: ");
+        fuelAmount = input.nextDouble();
 
-        } 
-        
-        for (Client client : clients) {
-            System.out.println(client.cost);
+        // decremento to match the index
+        selectedFuelType--;
 
-        }
-
-    
+        return new Client(fuelsOptions[selectedFuelType], fuelAmount);
     }
 
+    static void printSales(Client[] totalclients) {
+        // tipos
+        int dieselCounter = 0, gasolineCounter = 0, etanolCounter = 0;
+        double totalCost = 0;
 
+        // TODO, counter inside class...
+        for (Client client : totalclients) {
+            totalCost += client.getCost();
 
+            if (client.getFuelType() == "Gasolina") {
+                gasolineCounter += 1;
+            } else if (client.getFuelType() == "Etanol") {
+                etanolCounter += 1;
+            } else {
 
+                dieselCounter += 1;
+            }
+        }
+
+        System.out.println("Total de vendas:" + totalCost);
+        System.out.println("Total de carros abastecido com Gasolina:" + gasolineCounter);
+        System.out.println("Total de carros abastecido com Etanol:" + etanolCounter);
+        System.out.println("Total de carros abastecido com Diesel:" + dieselCounter);
+
+    }
 
 }
