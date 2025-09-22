@@ -33,7 +33,6 @@ public class Gym {
 
         System.out.println("\nVocê gastou aproximadamente " + calories + " calorias no treino de hoje.");
 
-
         input.close();
     }
 
