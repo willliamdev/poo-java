@@ -1,9 +1,10 @@
 package source.graduation.GasStation;
 
 public class Fuel {
-    String type;
+    private String type;
+    private int salesCounter = 0;
     // price per liter 
-    Double price;
+    private Double price;
     
     public Fuel(String type, Double price) {
         this.type = type;
@@ -17,5 +18,12 @@ public class Fuel {
     public String getType() {
         return type;
     }
+
+    public void saleCounter() {
+        this.salesCounter++;
+    }
     
+    public int getSalesCounter() {
+        return salesCounter;
+    }
 }

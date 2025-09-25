@@ -29,7 +29,7 @@ public class GasStation {
             clients[i] = createClient(fuels);
         }
 
-        printSales(clients);
+        printSales(clients, fuels);
 
     }
 
@@ -39,50 +39,41 @@ public class GasStation {
         double fuelAmount;
 
         do {
-            System.out.println("Selecione o tipo de combustível ");
+            System.out.println("\n\nMenu de seleção combustível ");
             System.out.println(" 1 - Gasolina\n 2 - Etanol\n 3 - Diesel");
             System.out.print("Tipo = ");
             selectedFuelType = input.nextInt();
+
             if (selectedFuelType < 1 || selectedFuelType > 3) {
                 System.out.println("Ops! Opção inválida!!!");
             } else {
+                // decremento to match the index
+                selectedFuelType--;
+                fuelsOptions[selectedFuelType].saleCounter();
                 break;
             }
 
         } while (true);
 
-        System.out.print("Insira a quantidade de litros: ");
+        System.out.print("\nInsira a quantidade de litros: ");
         fuelAmount = input.nextDouble();
-
-        // decremento to match the index
-        selectedFuelType--;
 
         return new Client(fuelsOptions[selectedFuelType], fuelAmount);
     }
 
-    static void printSales(Client[] totalclients) {
+    static void printSales(Client[] totalclients, Fuel[] fuelsTypes) {
         // tipos
-        int dieselCounter = 0, gasolineCounter = 0, etanolCounter = 0;
         double totalCost = 0;
 
-        // TODO, counter inside class...
         for (Client client : totalclients) {
             totalCost += client.getCost();
-
-            if (client.getFuelType() == "Gasolina") {
-                gasolineCounter += 1;
-            } else if (client.getFuelType() == "Etanol") {
-                etanolCounter += 1;
-            } else {
-
-                dieselCounter += 1;
-            }
         }
 
-        System.out.println("Total de vendas:" + totalCost);
-        System.out.println("Total de carros abastecido com Gasolina:" + gasolineCounter);
-        System.out.println("Total de carros abastecido com Etanol:" + etanolCounter);
-        System.out.println("Total de carros abastecido com Diesel:" + dieselCounter);
+        System.out.println("\n<<<<<<<<<<<<<<< Relatório do dia >>>>>>>>>>>>>>>");
+        System.out.println("Total de vedas: R$" + totalCost);
+        System.out.println("\nTotal de carros abastecido com Gasolina:" + fuelsTypes[0].getSalesCounter());
+        System.out.println("Total de carros abastecido com Etanol:" + fuelsTypes[1].getSalesCounter());
+        System.out.println("Total de carros abastecido com Diesel:" + fuelsTypes[2].getSalesCounter());
 
     }
 
