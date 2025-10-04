@@ -27,10 +27,10 @@ void exibirSaldo() → mostra na tela o nome do titular e o saldo atual
 
 ## O método main (programa principal)
 No main, você deve:
-- Criar duas contas bancárias (dois objetos gerados apartir da classe).
-- Definir titular e saldo inicial de cada uma.
-- Fazer algumas operações de depósito e saque.
-- Mostrar os resultados na tela usando o método exibirSaldo().
+- [x] Criar duas contas bancárias (dois objetos gerados apartir da classe).
+- [x] Definir titular e saldo inicial de cada uma.
+- [x] Fazer algumas operações de depósito e saque.
+- [x] Mostrar os resultados na tela usando o método exibirSaldo().
 
 
 
