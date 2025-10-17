@@ -34,6 +34,8 @@ public class Animal {
         - *habitat*
         - *sex*
         - *noise* 
+        - *energy*
 2. Criar um construtor público na classe Animal que inicialize todos os atributos, e que chame ao menos um método privado da própria classe.
+    - *chamando o método `hello()` ao instanciar um novo animal*
 3. Criar duas subclasses da classe Animal.
 4. Nas subclasses aplicar Polimorfismo e Encapsulamento
