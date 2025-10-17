@@ -1,6 +1,6 @@
 # Herança, Polimorfismo e Encapsulamento
 
-##  Código inicial fornecido
+##   Código inicial fornecido
 
 ```java
 // Código inicial: classe base Animal
@@ -25,11 +25,15 @@ public class Animal {
 
 ---
 
-## 📝 Instruções da atividade
+## Instruções da atividade
 
-1. Criar novos atributos na classe Animal:
+- [x] Criar novos atributos na classe Animal:
     - Um atributo público.
+        - *color*
     - Um atributo privado.
+        - *habitat*
+        - *sex*
+        - *noise* 
 2. Criar um construtor público na classe Animal que inicialize todos os atributos, e que chame ao menos um método privado da própria classe.
 3. Criar duas subclasses da classe Animal.
-4. Nas subclasses aplicar Polimorfismo e Encapsulamento.
+4. Nas subclasses aplicar Polimorfismo e Encapsulamento
