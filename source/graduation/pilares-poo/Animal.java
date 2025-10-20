@@ -24,20 +24,32 @@ public class Animal {
     }
 
     public void eat() {
-        if (energy <= 100) {
-            System.out.println(this.name + " já está com 100% de energia");
+        int currentEnergy = getEnergy();
+
+        if (currentEnergy >= 100) {
+            System.out.println(this.name + " já está cheio de eregia ");
+            return;
         }
-        energy += 10;
+
+        System.out.println(this.name + " ganhou +10% de energia");
+        setEnergy(currentEnergy += 10);
     }
 
-    private void move() {
-        System.out.println(this.name + "está se movendo..");
-        energy -= 10;
+    public void move() {
+        int currentEnergy = getEnergy();
+
+        if (currentEnergy <= 0) {
+            System.out.println(this.name + " Está sem energia..");
+            return;
+        }
+
+        System.out.println(this.name + " está se movendo..");
+        setEnergy(currentEnergy -= 10);
     }
 
     private void hello() {
         makeNoise();
-        System.out.println(this.name + "lhe dá as saudações!!");
+        System.out.println(this.name + " lhe dá as saudações!!");
     }
 
     // Getters e Setter pros atributos privados
@@ -48,7 +60,7 @@ public class Animal {
 
     public void setSex(char sex) {
         if (sex != 'M' && sex != 'F') {
-            System.out.println("Valor de sexo inválido: " + sex + ". Deve ser 'M' ou 'F'.");
+            System.out.println("Valor de sexo inválido: " + sex + " Deve ser 'M' ou 'F'.");
             return;
         }
         this.sex = sex;
@@ -75,19 +87,16 @@ public class Animal {
         return energy;
     }
 
-    public void setEnergy(int energy) {
-        if (this.energy >= 100) {
-            System.out.println("Energia já está em " + 100 + "%");
+    protected void setEnergy(int energy) {
+        // limitar entre 0 e 100
+        if (energy > 100) {
+            this.energy = 100;
+            return;
+        } else if (energy < 0) {
+            this.energy = 0;
             return;
         }
-
-        this.energy += energy;
-
-        // limitar em 100%
-        if (this.energy > 100) {
-            this.energy = 100;
-        }
-
+        this.energy = energy;
     }
 
 }
